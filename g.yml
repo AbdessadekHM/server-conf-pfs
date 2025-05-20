@@ -11,15 +11,17 @@ spring:
     gateway:
       globalCors:
         corsConfigurations:
-          "/**":
-            allowedOrigins: "*"
+          ["/**"]:
+            allowedOrigins: 
+              - "*"
             allowedMethods:
             - GET
             - POST
             - PUT
             - DELETE
             - OPTIONS
-            allowedHeaders: "*"
+            allowedHeaders: 
+              - "*"
 #            allowCredentials: true
             
       mvc:
