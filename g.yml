@@ -9,6 +9,14 @@ eureka:
 spring:
   cloud:
     gateway:
+      globalCors:
+        corsConfigurations:
+          ["/**"]:
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowCredentials: true
+            
       mvc:
         routes:
           - id: group
