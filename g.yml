@@ -9,7 +9,7 @@ eureka:
 spring:
   cloud:
     gateway:
-      globalCors:
+      globalcors:
         cors-configurations:
           ["/**"]:
             allowedOrigins:  "*"
@@ -43,17 +43,11 @@ spring:
           uri: lb://receiver
           predicates:
             - Path=/receivers/**
-          metadata:
-          cors:
-            allowedOrigins: '*'
-            allowedMethods:
-              - GET
-              - POST
-            allowedHeaders: '*'
             
-          # filters:
-          #   - StripPrefix=1
-          #   - AddRequestHeader=Authorization, Bearer ${token}
+          filters:
+            - StripPrefix=1
+            - AddRequestHeader=Authorization, Bearer ${token}
+
         - id: schedule
           uri: lb://SCHEDULE
           predicates:
