@@ -4,6 +4,20 @@ eureka:
       defaultZone: http://discovery:8888/eureka/
     registry-fetch-interval-seconds: 3
 spring:
+
+  cloud: 
+    gateway:
+      globalcors:
+        cors-configurations:
+          ["/**"]:
+            allowedOrigins:  "*"
+            allowedMethods:
+            - GET
+            - POST
+            - PUT
+            - DELETE
+            - OPTIONS
+            allowedHeaders:  "*"
   
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
