@@ -4,6 +4,61 @@ eureka:
       defaultZone: http://discovery:8888/eureka/
     registry-fetch-interval-seconds: 3
 spring:
+  cloud:
+    gateway:
+      globalCors:
+        cors-configurations:
+          ["/**"]:
+            allowedOrigins:  "*"
+            allowedMethods:
+            - GET
+            - POST
+            - PUT
+            - DELETE
+            - OPTIONS
+            allowedHeaders:  "*"
+#            allowCredentials: true
+            
+      mvc:
+        routes:
+          - id: group
+            uri: lb://GROUP
+            predicates:
+              - Path=/groups/**
+            filters:
+              - StripPrefix=1
+              - AddRequestHeader=Authorization, Bearer ${token}
+
+          - id: history
+            uri: lb://HISTORY
+            predicates:
+              - Path=/histories/**
+            filters:
+              - StripPrefix=1
+              - AddRequestHeader=Authorization, Bearer ${token}
+          - id: receiver
+            uri: lb://receiver
+            predicates:
+              - Path=/receivers/**
+            filters:
+              - StripPrefix=1
+              - AddRequestHeader=Authorization, Bearer ${token}
+          - id: schedule
+            uri: lb://SCHEDULE
+            predicates:
+              - Path=/schedule/**
+            filters:
+              - StripPrefix=1
+              - AddRequestHeader=Authorization, Bearer ${token}
+          - id: sendmsg
+            uri: lb://SendMsg
+            predicates:
+              - Path=/sendmsg/**
+            filters:
+              - StripPrefix=1
+              - AddRequestHeader=Authorization, Bearer ${token}
+
+  
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
