@@ -12,7 +12,7 @@ spring:
       globalCors:
         corsConfigurations:
           "/**":
-            allowedOrigins: "http://localhost:4200"
+            allowedOrigins: "*"
             allowedMethods:
             - GET
             - POST
@@ -20,7 +20,7 @@ spring:
             - DELETE
             - OPTIONS
             allowedHeaders: "*"
-            allowCredentials: true
+#            allowCredentials: true
             
       mvc:
         routes:
