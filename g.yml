@@ -10,18 +10,16 @@ spring:
   cloud:
     gateway:
       globalCors:
-        corsConfigurations:
+        cors-configurations:
           ["/**"]:
-            allowedOrigins: 
-              - "*"
+            allowedOrigins:  "*"
             allowedMethods:
             - GET
             - POST
             - PUT
             - DELETE
             - OPTIONS
-            allowedHeaders: 
-              - "*"
+            allowedHeaders:  "*"
 #            allowCredentials: true
             
       mvc:
